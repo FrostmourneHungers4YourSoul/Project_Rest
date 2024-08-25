@@ -7,6 +7,7 @@ import ru.itmentor.spring.boot_security.demo.repository.RoleRepository;
 import ru.itmentor.spring.boot_security.demo.service.RoleService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoleServiceImpl implements RoleService {
@@ -21,11 +22,16 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<Role> getAllRoles() {
-        return roleRepository.getAllRoles();
+        return roleRepository.findAll();
     }
 
     @Override
     public List<Role> findIdRoles(List<Long> id) {
-        return roleRepository.findIdRoles(id);
+        return roleRepository.findAllById(id);
+    }
+
+    @Override
+    public Optional<Role> findByIdRole(Long id) {
+        return roleRepository.findById(id);
     }
 }

@@ -1,15 +1,11 @@
 package ru.itmentor.spring.boot_security.demo.repository;
 
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ru.itmentor.spring.boot_security.demo.model.User;
 
-import java.util.List;
 
-public interface UserRepository {
-     List<User> getAll();
-     void addUser(User user);
-     void updateUser(User user);
-     void deleteUser(long id);
-     User getUser(long id);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
      User findByUsername(String username);
 }
